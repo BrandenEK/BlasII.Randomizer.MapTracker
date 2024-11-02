@@ -8,20 +8,21 @@
     <Product>Rando Map</Product>
     <Authors>Damocles</Authors>
     <Company>Damocles</Company>
-    <Description>A mod for Blasphemous 2</Description>
-    <Version>0.1.0</Version>
+    <Description>An in-game map tracker for the Blasphemous 2 Randomizer</Description>
+    <Version>1.0.0</Version>
     
-    <TargetName>MapTracker</TargetName>
+    <TargetName>RandoMap</TargetName>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <DocumentationFile>bin\$(Configuration)\$(TargetName).xml</DocumentationFile>
-    <RepositoryUrl>https://github.com/Example</RepositoryUrl>
+    <RepositoryUrl>https://github.com/BrandenEK/BlasII.Randomizer.MapTracker</RepositoryUrl>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="BlasII.GameLibs" Version="1.1.0" />
-    <PackageReference Include="BlasII.ModdingAPI" Version="0.1.0" />
+    <PackageReference Include="BlasII.ModdingAPI" Version="1.0.3" />
+    <PackageReference Include="BlasII.Randomizer" Version="1.0.4" />
   </ItemGroup>
 
   <Target Name="Development" AfterTargets="PostBuildEvent">

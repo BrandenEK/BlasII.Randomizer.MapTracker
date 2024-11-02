@@ -12,7 +12,7 @@
     
     <TargetName>RandoMap</TargetName>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <RepositoryUrl>https://github.com/BrandenEK/BlasII.Randomizer.Map</RepositoryUrl>
+    <RepositoryUrl>https://github.com/BrandenEK/BlasII.Randomizer.MapTracker</RepositoryUrl>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 

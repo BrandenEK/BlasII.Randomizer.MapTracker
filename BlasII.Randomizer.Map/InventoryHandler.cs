@@ -1,6 +1,6 @@
 ﻿using BlasII.Randomizer.Items;
 
-namespace BlasII.Randomizer.Map
+namespace BlasII.Randomizer.MapTracker
 {
     internal class InventoryHandler
     {

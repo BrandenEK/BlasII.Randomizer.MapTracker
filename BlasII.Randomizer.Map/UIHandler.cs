@@ -8,7 +8,7 @@ using Il2CppSystem.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace BlasII.Randomizer.Map
+namespace BlasII.Randomizer.MapTracker
 {
     internal class UIHandler
     {

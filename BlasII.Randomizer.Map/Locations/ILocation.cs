@@ -1,7 +1,7 @@
 ﻿using BlasII.Randomizer.Items;
 using UnityEngine.UI;
 
-namespace BlasII.Randomizer.Map
+namespace BlasII.Randomizer.MapTracker
 {
     internal interface ILocation
     {

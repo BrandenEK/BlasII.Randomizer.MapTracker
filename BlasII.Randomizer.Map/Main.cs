@@ -2,7 +2,7 @@
 using System.Text;
 using UnityEngine;
 
-namespace BlasII.Randomizer.Map
+namespace BlasII.Randomizer.MapTracker
 {
     public class Main : MelonMod
     {

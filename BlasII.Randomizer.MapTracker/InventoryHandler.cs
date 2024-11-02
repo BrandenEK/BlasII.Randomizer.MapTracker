@@ -1,4 +1,6 @@
-﻿using BlasII.Randomizer.Items;
+﻿using BlasII.ModdingAPI;
+using BlasII.Randomizer.Items;
+using BlasII.Randomizer.Shuffle;
 
 namespace BlasII.Randomizer.MapTracker;
 
@@ -31,7 +33,7 @@ internal class InventoryHandler
     /// </summary>
     private void CalculateInventory()
     {
-        Main.MapTracker.Log("Calculating new inventory");
+        ModLog.Info("Calculating new inventory");
 
         var settings = Main.Randomizer.CurrentSettings;
         _currentInventory = new Blas2Inventory(settings, Main.Randomizer.Data.DoorDictionary);
@@ -43,7 +45,7 @@ internal class InventoryHandler
             if (item.progression)
             {
                 _currentInventory.AddItem(item);
-                Main.MapTracker.LogWarning("Adding " + item.id);
+                ModLog.Warn("Adding " + item.id);
             }
         }
 

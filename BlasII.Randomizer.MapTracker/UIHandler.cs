@@ -1,5 +1,7 @@
-﻿using BlasII.ModdingAPI.Input;
+﻿using BlasII.ModdingAPI;
+using BlasII.ModdingAPI.Input;
 using BlasII.ModdingAPI.Utils;
+using BlasII.Randomizer.Shuffle;
 using Il2CppSystem.IO;
 using Il2CppTGK.Game;
 using Il2CppTGK.Game.Components.UI;
@@ -125,7 +127,7 @@ internal class UIHandler
         Object.Destroy(ZoomedRenderer.GetChild(1).gameObject);
 
         // Create rect for ui holder
-        Main.MapTracker.Log("Creating new location holder");
+        ModLog.Info("Creating new location holder");
         _locationHolder = UIModder.CreateRect("LocationHolder", parent);
         _cellHolder = NormalRenderer.GetChild(0);
 
@@ -157,7 +159,7 @@ internal class UIHandler
             Object.Destroy(parent.GetChild(0).gameObject);
 
         // Create text for location name
-        Main.MapTracker.Log("Creating new name text");
+        ModLog.Info("Creating new name text");
         _nameText = UIModder.CreateRect("LocationName", parent).AddText().SetFontSize(50).AddShadow();
     }
 

@@ -1,5 +1,6 @@
 ﻿using BlasII.Randomizer.Items;
 using BlasII.Randomizer.MapTracker.Enums;
+using BlasII.Randomizer.Shuffle;
 using UnityEngine.UI;
 
 namespace BlasII.Randomizer.MapTracker.Locations;

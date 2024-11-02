@@ -1,4 +1,5 @@
-﻿using UnityEngine.UI;
+﻿using BlasII.Randomizer.MapTracker.Enums;
+using UnityEngine.UI;
 
 namespace BlasII.Randomizer.MapTracker.Locations;
 

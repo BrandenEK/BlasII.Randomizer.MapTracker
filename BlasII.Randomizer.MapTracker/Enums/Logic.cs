@@ -1,5 +1,5 @@
 ﻿
-namespace BlasII.Randomizer.MapTracker;
+namespace BlasII.Randomizer.MapTracker.Enums;
 
 internal enum Logic
 {

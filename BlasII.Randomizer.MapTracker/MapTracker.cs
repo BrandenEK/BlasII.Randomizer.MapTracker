@@ -1,5 +1,6 @@
 ﻿using BlasII.ModdingAPI;
 using BlasII.ModdingAPI.Files;
+using BlasII.Randomizer.MapTracker.Enums;
 using BlasII.Randomizer.MapTracker.Locations;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,11 +23,11 @@ public class MapTracker : BlasIIMod
     /// <summary>
     /// The current mode that the map is in
     /// </summary>
-    public MapMode MapMode { get; private set; } = MapMode.Closed;
+    internal MapMode MapMode { get; private set; } = MapMode.Closed;
     /// <summary>
     /// Whether locations should be displayed on the map
     /// </summary>
-    public bool DisplayLocations { get; private set; } = true;
+    internal bool DisplayLocations { get; private set; } = true;
 
     /// <summary>
     /// Initialize all handlers

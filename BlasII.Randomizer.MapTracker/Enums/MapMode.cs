@@ -1,7 +1,7 @@
 ﻿
-namespace BlasII.Randomizer.MapTracker;
+namespace BlasII.Randomizer.MapTracker.Enums;
 
-public enum MapMode
+internal enum MapMode
 {
     Closed = 0,
     OpenTeleport = 1,

@@ -6,19 +6,31 @@ using UnityEngine;
 
 namespace BlasII.Randomizer.MapTracker;
 
+/// <summary>
+/// An in-game map tracker for the Blasphemous 2 Randomizer
+/// </summary>
 public class MapTracker : BlasIIMod
 {
+    internal MapTracker() : base(ModInfo.MOD_ID, ModInfo.MOD_NAME, ModInfo.MOD_AUTHOR, ModInfo.MOD_VERSION) { }
+
     private readonly InventoryHandler _inventory = new();
     private readonly UIHandler _ui = new();
 
     private readonly Dictionary<Vector2Int, ILocation> _locationData = new();
     internal Dictionary<Vector2Int, ILocation> AllLocations => _locationData;
 
+    /// <summary>
+    /// The current mode that the map is in
+    /// </summary>
     public MapMode MapMode { get; private set; } = MapMode.Closed;
+    /// <summary>
+    /// Whether locations should be displayed on the map
+    /// </summary>
     public bool DisplayLocations { get; private set; } = true;
 
-    public MapTracker() : base(ModInfo.MOD_ID, ModInfo.MOD_NAME, ModInfo.MOD_AUTHOR, ModInfo.MOD_VERSION) { }
-
+    /// <summary>
+    /// Initialize all handlers
+    /// </summary>
     protected override void OnInitialize()
     {
         if (FileHandler.LoadDataAsSprite("marker.png", out Sprite image, new SpriteImportOptions() { PixelsPerUnit = 10 }))
@@ -38,11 +50,14 @@ public class MapTracker : BlasIIMod
         LoadLocationData();
     }
 
+    /// <summary>
+    /// Load the Single/Multiple location data from the json list
+    /// </summary>
     private void LoadLocationData()
     {
         if (!FileHandler.LoadDataAsJson("locations.json", out LocationData[] locations))
         {
-            LogError("Failed to load location data!");
+            ModLog.Error("Failed to load location data!");
             return;
         }
 
@@ -57,11 +72,21 @@ public class MapTracker : BlasIIMod
         }
     }
 
-    protected override void OnExitGame() => _inventory.Refresh();
+    /// <summary>
+    /// Refresh inventory when exiting game
+    /// </summary>
+    protected override void OnExitGame()
+    {
+        _inventory.Refresh();
+    }
 
+    /// <summary>
+    /// Process input and update UI when on map screen
+    /// </summary>
     protected override void OnLateUpdate()
     {
-        if (MapMode == MapMode.Closed) return;
+        if (MapMode == MapMode.Closed)
+            return;
 
         if (InputHandler.GetKeyDown("ToggleLocations") && MapMode == MapMode.OpenNormal)
         {
@@ -72,23 +97,35 @@ public class MapTracker : BlasIIMod
         _ui.Update(_inventory.CurrentInventory);
     }
 
+    /// <summary>
+    /// Called when opening the map
+    /// </summary>
     public void OnOpenMap(bool isNormal)
     {
         MapMode = isNormal ? MapMode.OpenNormal : MapMode.OpenTeleport;
         _ui.Refresh(_inventory.CurrentInventory, isNormal, isNormal);
     }
 
+    /// <summary>
+    /// Called when closing the map
+    /// </summary>
     public void OnCloseMap()
     {
         MapMode = MapMode.Closed;
     }
 
+    /// <summary>
+    /// Called when zooming the map
+    /// </summary>
     public void OnZoomIn()
     {
         MapMode = MapMode.OpenNormal;
         _ui.Refresh(_inventory.CurrentInventory, true, true);
     }
 
+    /// <summary>
+    /// Called when zooming the map
+    /// </summary>
     public void OnZoomOut()
     {
         MapMode = MapMode.OpenZoomed;

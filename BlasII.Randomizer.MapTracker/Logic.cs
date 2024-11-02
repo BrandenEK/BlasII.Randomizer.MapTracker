@@ -1,11 +1,10 @@
 ﻿
-namespace BlasII.Randomizer.MapTracker
+namespace BlasII.Randomizer.MapTracker;
+
+internal enum Logic
 {
-    internal enum Logic
-    {
-        Finished,
-        NoneReachable,
-        SomeReachable,
-        AllReachable,
-    }
+    Finished,
+    NoneReachable,
+    SomeReachable,
+    AllReachable,
 }

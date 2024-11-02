@@ -1,5 +1,5 @@
 ﻿
-namespace BlasII.Randomizer.Map.Locations
+namespace BlasII.Randomizer.MapTracker.Locations
 {
     internal class LocationData
     {

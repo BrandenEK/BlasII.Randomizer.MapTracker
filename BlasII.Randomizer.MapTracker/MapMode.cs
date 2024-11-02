@@ -1,5 +1,5 @@
 ﻿
-namespace BlasII.Randomizer.Map
+namespace BlasII.Randomizer.MapTracker
 {
     public enum MapMode
     {

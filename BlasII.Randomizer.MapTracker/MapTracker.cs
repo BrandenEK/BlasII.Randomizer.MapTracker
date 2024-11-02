@@ -1,10 +1,10 @@
 ﻿using BlasII.ModdingAPI;
 using BlasII.ModdingAPI.Files;
-using BlasII.Randomizer.Map.Locations;
+using BlasII.Randomizer.MapTracker.Locations;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace BlasII.Randomizer.Map
+namespace BlasII.Randomizer.MapTracker
 {
     public class MapTracker : BlasIIMod
     {

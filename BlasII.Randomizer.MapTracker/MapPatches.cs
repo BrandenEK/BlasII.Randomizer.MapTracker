@@ -1,7 +1,7 @@
 ﻿using HarmonyLib;
 using Il2CppTGK.Game.Components.UI;
 
-namespace BlasII.Randomizer.Map
+namespace BlasII.Randomizer.MapTracker
 {
     /// <summary>
     /// Process opening and closing the map

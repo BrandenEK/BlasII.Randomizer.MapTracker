@@ -1,4 +1,5 @@
-﻿using BlasII.ModdingAPI;
+﻿using BlasII.Framework.UI;
+using BlasII.ModdingAPI;
 using BlasII.ModdingAPI.Input;
 using BlasII.ModdingAPI.Utils;
 using BlasII.Randomizer.Shuffle;
@@ -120,7 +121,8 @@ internal class UIHandler
     private void CreateLocationHolder()
     {
         var parent = MapHolder;
-        if (parent == null) return;
+        if (parent == null)
+            return;
 
         // Remove radar ui
         Object.Destroy(NormalRenderer.GetChild(1).gameObject);
@@ -128,19 +130,29 @@ internal class UIHandler
 
         // Create rect for ui holder
         ModLog.Info("Creating new location holder");
-        _locationHolder = UIModder.CreateRect("LocationHolder", parent);
+        _locationHolder = UIModder.Create(new RectCreationOptions()
+        {
+            Name = "LocationHolder",
+            Parent = parent,
+        });
         _cellHolder = NormalRenderer.GetChild(0);
 
         // Create image for each item location
         foreach (var location in Main.MapTracker.AllLocations)
         {
-            var rect = UIModder.CreateRect($"Location {location.Key}", _locationHolder);
+            var rect = UIModder.Create(new RectCreationOptions()
+            {
+                Name = $"Location {location.Key}",
+                Parent = _locationHolder,
+                Size = new Vector2(30, 30),
+            });
             rect.localPosition = new Vector3(location.Key.x * 48, location.Key.y * 48);
-            rect.sizeDelta = new Vector2(30, 30);
 
-            var image = rect.gameObject.AddComponent<Image>();
-            image.sprite = _locationImage;
-            image.color = Color.red;
+            var image = rect.AddImage(new ImageCreationOptions()
+            {
+                Sprite = _locationImage,
+                Color = Color.red,
+            });
 
             location.Value.Image = image;
         }
@@ -152,7 +164,8 @@ internal class UIHandler
     private void CreateNameText()
     {
         var parent = MarksHolder;
-        if (parent == null) return;
+        if (parent == null)
+            return;
 
         // Remove mark ui
         if (parent.GetChild(0) != null)
@@ -160,7 +173,14 @@ internal class UIHandler
 
         // Create text for location name
         ModLog.Info("Creating new name text");
-        _nameText = UIModder.CreateRect("LocationName", parent).AddText().SetFontSize(50).AddShadow();
+        _nameText = UIModder.Create(new RectCreationOptions()
+        {
+            Name = "LocationName",
+            Parent = parent,
+        }).AddText(new TextCreationOptions()
+        {
+            FontSize = 50,
+        }).AddShadow();
     }
 
     private Vector2Int CalculateCursorPosition()
@@ -170,7 +190,7 @@ internal class UIHandler
         return new Vector2Int(x, y);
     }
 
-    private readonly ObjectCache<MapWindowLogic> _mapCache = new(() => Object.FindObjectOfType<MapWindowLogic>());
+    private readonly ObjectCache<MapWindowLogic> _mapCache = new(Object.FindObjectOfType<MapWindowLogic>);
     private Transform MapHolder => _mapCache.Value?.mapContent;
     private Transform MarksHolder => _mapCache.Value?.marksList.transform;
     private Transform NormalRenderer => MapHolder.GetChild(0);

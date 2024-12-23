@@ -2,6 +2,7 @@
 using BlasII.ModdingAPI.Files;
 using BlasII.Randomizer.MapTracker.Enums;
 using BlasII.Randomizer.MapTracker.Locations;
+using BlasII.Randomizer.MapTracker.Models;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -56,7 +57,7 @@ public class MapTracker : BlasIIMod
     /// </summary>
     private void LoadLocationData()
     {
-        if (!FileHandler.LoadDataAsJson("locations.json", out LocationData[] locations))
+        if (!FileHandler.LoadDataAsJson("locations.json", out LocationInfo[] locations))
         {
             ModLog.Error("Failed to load location data!");
             return;

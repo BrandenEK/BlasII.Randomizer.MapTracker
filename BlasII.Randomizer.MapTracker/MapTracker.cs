@@ -69,9 +69,8 @@ public class MapTracker : BlasIIMod
             if (info.Locations == null || info.Locations.Length == 0)
                 continue;
 
-            // temp
-            if (info.Locations.Any(x => x.EndsWith("c0")) || _locationData.ContainsKey(new Vector2Int(info.X, info.Y)))
-                continue;
+            // temp until cherubs are fixed
+            info.Locations = info.Locations.Where(x => !x.EndsWith("c0")).ToArray();
 
             _locationData.Add(new Vector2Int(info.X, info.Y), info.Locations.Length == 1
                 ? new SingleLocation(info.Locations[0])

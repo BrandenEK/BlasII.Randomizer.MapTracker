@@ -4,6 +4,7 @@ using BlasII.Randomizer.MapTracker.Enums;
 using BlasII.Randomizer.MapTracker.Locations;
 using BlasII.Randomizer.MapTracker.Models;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace BlasII.Randomizer.MapTracker;
@@ -66,6 +67,10 @@ public class MapTracker : BlasIIMod
         foreach (var info in locations)
         {
             if (info.Locations == null || info.Locations.Length == 0)
+                continue;
+
+            // temp
+            if (info.Locations.Any(x => x.EndsWith("c0")) || _locationData.ContainsKey(new Vector2Int(info.X, info.Y)))
                 continue;
 
             _locationData.Add(new Vector2Int(info.X, info.Y), info.Locations.Length == 1

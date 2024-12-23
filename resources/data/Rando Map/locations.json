@@ -80,12 +80,12 @@
   {
     "x": 35,
     "y": 51,
-    "locations": [ "Z0304.l4" ]
+    "locations": [ "Z0304.l3" ]
   },
   {
     "x": 37,
     "y": 52,
-    "locations": [ "Z0304.l9" ]
+    "locations": [ "Z0304.l8" ]
   },
   {
     "x": 38,
@@ -186,12 +186,12 @@
   {
     "x": 26,
     "y": 50,
-    "locations": [ "Z0415.l1" ]
+    "locations": [ "Z0415.l2" ]
   },
   {
     "x": 25,
     "y": 50,
-    "locations": [ "Z0415.l3" ]
+    "locations": [ "Z0415.l4" ]
   },
   {
     "x": 23,
@@ -207,6 +207,11 @@
     "x": 19,
     "y": 55,
     "locations": [ "Z0423.l1" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z0427.l6" ]
   },
 // City of the Blessed Name
   {
@@ -237,7 +242,7 @@
   {
     "x": 50,
     "y": 44,
-    "locations": [ "Z05BZ01.l0", "Z05BZ01.l16", "Z05BZ01.i0" ]
+    "locations": [ "Z05BZ01.l0", "Z05BZ01.l16", "Z05BZ01.i0.a", "Z05BZ01.i0.b" ]
   },
   {
     "x": 54,
@@ -325,6 +330,16 @@
     "y": 47,
     "locations": [ "Z0615.r2" ]
   },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z0616.l14" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z0617.l8" ]
+  },
 // Palace of the Embroideries
   {
     "x": 84,
@@ -354,7 +369,7 @@
   {
     "x": 78,
     "y": 44,
-    "locations": [ "Z0722.s0", "Z0722.s1" ]
+    "locations": [ "Z0722.i0.a", "Z0722.i0.b" ]
   },
   {
     "x": 77,
@@ -421,6 +436,71 @@
     "x": 68,
     "y": 54,
     "locations": [ "Z0817.l0" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z0822.l2" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z0823.a0" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z0826.l13" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z0829.l2" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z0830.l7" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z0832.l5" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z0835.l7" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z0837.l5" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z0840.l1" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z0842.l2" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z0843.l17" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z0845.l4" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z0846.l22" ]
   },
 // Crown of Towers
   {
@@ -590,6 +670,16 @@
     "locations": [ "Z1063.w0" ]
   },
   {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z1065.l4" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z1067.l9" ]
+  },
+  {
     "x": 51,
     "y": 48,
     "locations": [ "SHOPITINERANT.o3" ]
@@ -650,6 +740,11 @@
     "x": 29,
     "y": 33,
     "locations": [ "Z1216.r9", "Z1216.i9" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z1219.l13" ]
   },
   {
     "x": 33,
@@ -778,11 +873,16 @@
     "y": 31,
     "locations": [ "Z1427.l0" ]
   },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z1429.l11" ]
+  },
 // Dreams of Incense
   {
     "x": 67,
     "y": 37,
-    "locations": [ "Z1501.s0", "Z1501.s1", "Z1501.s2", "Z1501.s3", "Z1501.s4" ]
+    "locations": [ "Z1501.i0.a", "Z1501.i0.b", "Z1501.i0.c", "Z1501.i0.d", "Z1501.i0.e" ]
   },
 // The Severed Tower
   {
@@ -866,6 +966,16 @@
     "y": 41,
     "locations": [ "Z1719.l3" ]
   },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z1721.l7" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z1722.i1" ]
+  },
 // Crimson Rains
   {
     "x": 52,
@@ -875,7 +985,7 @@
   {
     "x": 49,
     "y": 74,
-    "locations": [ "Z1802.l10" ]
+    "locations": [ "Z1802.l7" ]
   },
   {
     "x": 53,
@@ -906,7 +1016,7 @@
   {
     "x": 51,
     "y": 39,
-    "locations": [ "Z1903.l0" ]
+    "locations": [ "Z1903.l1" ]
   },
   {
     "x": 54,
@@ -1040,6 +1150,56 @@
     "y": 32,
     "locations": [ "Z2123.l2" ]
   },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2127.l21" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2132.l7" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2133.l2" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2136.l1" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2140.l7" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2145.l1" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2146.l12" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2147.l0" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2149.l0" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2150.i0.a", "Z2150.io.b" ]
+  },
 // Beneath Her Sacred Grounds
   {
     "x": 51,
@@ -1066,6 +1226,21 @@
     "y": 23,
     "locations": [ "Z2310.w0" ]
   },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2311.l8" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2314.l10" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2317.l2" ]
+  },
 // Garden of the High Choirs
   {
     "x": 43,
@@ -1075,17 +1250,17 @@
   {
     "x": 43,
     "y": 55,
-    "locations": [ "Z2401.l3" ]
+    "locations": [ "Z2401.l0.a" ]
   },
   {
     "x": 43,
     "y": 56,
-    "locations": [ "Z2401.l4" ]
+    "locations": [ "Z2401.l0.b" ]
   },
   {
     "x": 43,
     "y": 60,
-    "locations": [ "Z2401.l2" ]
+    "locations": [ "Z2401.l0.c" ]
   },
   {
     "x": 43,
@@ -1102,5 +1277,182 @@
     "x": 56,
     "y": 40,
     "locations": [ "SHOPMISSABLES.o0", "SHOPMISSABLES.o1", "SHOPMISSABLES.o2", "SHOPMISSABLES.o3", "SHOPMISSABLES.o4", "SHOPMISSABLES.o5", "SHOPMISSABLES.o6" ]
+  },
+// Icebound Mausoleum
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2702.i0" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2703.l1" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2704.l6" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2704.l7" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2705.l5" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2705.i6" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2706.l10" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2708.l9" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2712.l14" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2716.l5" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2719.l5" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2724.l12" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2731.l2" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2735.r7" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2741.i0" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2743.i0" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2744.l21" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2746.i0" ]
+  },
+// Santa Vigilia
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2801.l9" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2804.i8" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2804.r0", "Z2804.w0" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2805.i0" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2814.w0" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2815.l13" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2816.i7" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2823.l22" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2827.r7" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2828.l15" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2828.l16" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2828.l18" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2828.i17" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2829.l23" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2834.l0" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2835.l12" ]
+  },
+  {
+    "x": -1,
+    "y": -1,
+    "locations": [ "Z2835.i0" ]
   }
 ]

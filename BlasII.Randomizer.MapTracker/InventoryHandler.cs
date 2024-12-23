@@ -48,7 +48,6 @@ internal class InventoryHandler
                 continue;
 
             _currentInventory.Add(item.Id);
-            ModLog.Warn("Adding " + item.Id);
         }
     }
 

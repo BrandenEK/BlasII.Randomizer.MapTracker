@@ -1,13 +1,12 @@
-﻿using BlasII.Framework.UI;
+﻿using Basalt.LogicParser;
+using BlasII.Framework.UI;
 using BlasII.ModdingAPI;
 using BlasII.ModdingAPI.Input;
 using BlasII.ModdingAPI.Utils;
-using BlasII.Randomizer.Shuffle;
 using Il2CppSystem.IO;
 using Il2CppTGK.Game;
 using Il2CppTGK.Game.Components.UI;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace BlasII.Randomizer.MapTracker;
 
@@ -31,7 +30,7 @@ internal class UIHandler
     /// <summary>
     /// Refresh all cell and location UI
     /// </summary>
-    public void Refresh(Blas2Inventory inventory, bool showCells, bool showLocations)
+    public void Refresh(GameInventory inventory, bool showCells, bool showLocations)
     {
         // Create location holder and name text
         if (_locationHolder == null || _cellHolder == null)
@@ -70,7 +69,7 @@ internal class UIHandler
     /// <summary>
     /// Update the position of the location holder and content of the name text
     /// </summary>
-    public void Update(Blas2Inventory inventory)
+    public void Update(GameInventory inventory)
     {
         // Process changing cursor positions
         _currentCursor = CalculateCursorPosition();
@@ -98,7 +97,7 @@ internal class UIHandler
         _locationHolder.position = _cellHolder.position;
     }
 
-    private void UpdateNameText(Blas2Inventory inventory)
+    private void UpdateNameText(GameInventory inventory)
     {
         if (_nameText == null)
             return;

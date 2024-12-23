@@ -1,6 +1,6 @@
-﻿using BlasII.Randomizer.Items;
+﻿using Basalt.LogicParser;
 using BlasII.Randomizer.MapTracker.Enums;
-using BlasII.Randomizer.Shuffle;
+using BlasII.Randomizer.Models;
 using UnityEngine.UI;
 
 namespace BlasII.Randomizer.MapTracker.Locations;
@@ -14,18 +14,18 @@ internal class SingleLocation : ILocation
 
     public SingleLocation(string id) => _id = id;
 
-    public Logic GetReachability(Blas2Inventory inventory)
+    public Logic GetReachability(GameInventory inventory)
     {
         if (IsCollected)
             return Logic.Finished;
 
-        ItemLocation location = Main.Randomizer.Data.GetItemLocation(_id);
-        return inventory.Evaluate(location.logic) ? Logic.AllReachable : Logic.NoneReachable;
+        ItemLocation location = Main.Randomizer.ItemLocationStorage[_id];
+        return inventory.Evaluate(location.Logic) ? Logic.AllReachable : Logic.NoneReachable;
     }
 
-    public Logic GetReachabilityAtIndex(int index, Blas2Inventory inventory) => GetReachability(inventory);
+    public Logic GetReachabilityAtIndex(int index, GameInventory inventory) => GetReachability(inventory);
 
-    public string GetNameAtIndex(int index) => Main.Randomizer.Data.GetItemLocation(_id).name;
+    public string GetNameAtIndex(int index) => Main.Randomizer.ItemLocationStorage[_id].Name;
 
     private bool IsCollected => Main.Randomizer.ItemHandler.CollectedLocations.Contains(_id);
 }

@@ -1,6 +1,6 @@
-﻿using BlasII.Randomizer.Items;
+﻿using Basalt.LogicParser;
 using BlasII.Randomizer.MapTracker.Enums;
-using BlasII.Randomizer.Shuffle;
+using BlasII.Randomizer.Models;
 using UnityEngine.UI;
 
 namespace BlasII.Randomizer.MapTracker.Locations;
@@ -14,7 +14,7 @@ internal class MultipleLocation : ILocation
 
     public MultipleLocation(string[] ids) => _ids = ids;
 
-    public Logic GetReachability(Blas2Inventory inventory)
+    public Logic GetReachability(GameInventory inventory)
     {
         int numGreen = 0, numRed = 0;
 
@@ -23,8 +23,8 @@ internal class MultipleLocation : ILocation
             if (IsLocationCollected(id))
                 continue;
 
-            ItemLocation location = Main.Randomizer.Data.GetItemLocation(id);
-            if (inventory.Evaluate(location.logic))
+            ItemLocation location = Main.Randomizer.ItemLocationStorage[id];
+            if (inventory.Evaluate(location.Logic))
                 numGreen++;
             else
                 numRed++;
@@ -40,18 +40,18 @@ internal class MultipleLocation : ILocation
             return Logic.SomeReachable;
     }
 
-    public Logic GetReachabilityAtIndex(int index, Blas2Inventory inventory)
+    public Logic GetReachabilityAtIndex(int index, GameInventory inventory)
     {
         int validIndex = GetValidIndex(index);
 
         if (IsLocationCollected(_ids[validIndex]))
             return Logic.Finished;
 
-        ItemLocation location = Main.Randomizer.Data.GetItemLocation(_ids[validIndex]);
-        return inventory.Evaluate(location.logic) ? Logic.AllReachable : Logic.NoneReachable;
+        ItemLocation location = Main.Randomizer.ItemLocationStorage[_ids[validIndex]];
+        return inventory.Evaluate(location.Logic) ? Logic.AllReachable : Logic.NoneReachable;
     }
 
-    public string GetNameAtIndex(int index) => Main.Randomizer.Data.GetItemLocation(_ids[GetValidIndex(index)]).name;
+    public string GetNameAtIndex(int index) => Main.Randomizer.ItemLocationStorage[_ids[GetValidIndex(index)]].Name;
 
     private int GetValidIndex(int index) => (index %= _ids.Length) < 0 ? index + _ids.Length : index;
 

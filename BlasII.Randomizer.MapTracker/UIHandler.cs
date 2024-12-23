@@ -86,6 +86,14 @@ internal class UIHandler
         // Process location holder and name text
         UpdateLocationHolder();
         UpdateNameText(inventory);
+
+#if DEBUG
+        // Debug info for gathering positions
+        if (Input.GetKeyDown(KeyCode.Keypad0))
+        {
+            ModLog.Info($"Cursor pos: {_currentCursor}");
+        }
+#endif
     }
 
     private void UpdateLocationHolder()

@@ -71,6 +71,8 @@ public class MapTracker : BlasIIMod
 
             // temp until cherubs are fixed
             info.Locations = info.Locations.Where(x => !x.EndsWith("c0")).ToArray();
+            if (info.Locations.Length == 0)
+                continue;
 
             _locationData.Add(new Vector2Int(info.X, info.Y), info.Locations.Length == 1
                 ? new SingleLocation(info.Locations[0])

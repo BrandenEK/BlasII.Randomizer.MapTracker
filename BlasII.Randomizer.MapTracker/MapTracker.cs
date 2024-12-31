@@ -1,6 +1,5 @@
 ﻿using BlasII.ModdingAPI;
 using BlasII.ModdingAPI.Files;
-using BlasII.Randomizer.MapTracker.Enums;
 using BlasII.Randomizer.MapTracker.Locations;
 using BlasII.Randomizer.MapTracker.Models;
 using System.Collections.Generic;
@@ -22,14 +21,8 @@ public class MapTracker : BlasIIMod
     private readonly Dictionary<Vector2Int, ILocation> _locationData = new();
     internal Dictionary<Vector2Int, ILocation> AllLocations => _locationData;
 
-    /// <summary>
-    /// The current mode that the map is in
-    /// </summary>
-    internal MapMode MapMode { get; private set; } = MapMode.Closed;
-    /// <summary>
-    /// Whether locations should be displayed on the map
-    /// </summary>
-    internal bool DisplayLocations { get; private set; } = true;
+    private bool _isMapOpen = false;
+    private bool _showEverything = true;
 
     /// <summary>
     /// Initialize all handlers
@@ -93,25 +86,25 @@ public class MapTracker : BlasIIMod
     /// </summary>
     protected override void OnLateUpdate()
     {
-        if (MapMode == MapMode.Closed)
+        if (!_isMapOpen)
             return;
 
-        if (InputHandler.GetKeyDown("ToggleLocations") && MapMode == MapMode.OpenNormal)
+        if (InputHandler.GetKeyDown("ToggleLocations") && _ui.IsShowingCells && _ui.IsShowingLocations)
         {
-            DisplayLocations = !DisplayLocations;
-            _ui.Refresh(_inventory.CurrentInventory, true, true);
+            _showEverything = !_showEverything;
+            _ui.Refresh(_inventory.CurrentInventory, _showEverything);
         }
 
-        _ui.Update(_inventory.CurrentInventory);
+        _ui.Update(_inventory.CurrentInventory, _showEverything);
     }
 
     /// <summary>
-    /// Called when opening the map
+    /// Called when opening/zooming the map
     /// </summary>
-    public void OnOpenMap(bool isNormal)
+    public void OnOpenMap()
     {
-        MapMode = isNormal ? MapMode.OpenNormal : MapMode.OpenTeleport;
-        _ui.Refresh(_inventory.CurrentInventory, isNormal, isNormal);
+        _isMapOpen = true;
+        _ui.Refresh(_inventory.CurrentInventory, _showEverything);
     }
 
     /// <summary>
@@ -119,24 +112,6 @@ public class MapTracker : BlasIIMod
     /// </summary>
     public void OnCloseMap()
     {
-        MapMode = MapMode.Closed;
-    }
-
-    /// <summary>
-    /// Called when zooming the map
-    /// </summary>
-    public void OnZoomIn()
-    {
-        MapMode = MapMode.OpenNormal;
-        _ui.Refresh(_inventory.CurrentInventory, true, true);
-    }
-
-    /// <summary>
-    /// Called when zooming the map
-    /// </summary>
-    public void OnZoomOut()
-    {
-        MapMode = MapMode.OpenZoomed;
-        _ui.Refresh(_inventory.CurrentInventory, true, false);
+        _isMapOpen = false;
     }
 }

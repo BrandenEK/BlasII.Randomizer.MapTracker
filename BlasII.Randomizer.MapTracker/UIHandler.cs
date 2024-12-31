@@ -37,7 +37,7 @@ internal class UIHandler
     /// <summary>
     /// Refresh all cell and location UI
     /// </summary>
-    public void Refresh(GameInventory inventory)
+    public void Refresh(GameInventory inventory, bool showEverything)
     {
         ModLog.Info("Refreshing map cells and locations");
 
@@ -55,7 +55,7 @@ internal class UIHandler
             _mapCache.Value.uiRenderNormal.HideCell(cell);
             //_mapCache.Value.uiRenderZoomedOut.HideCell(cell);
         }
-        foreach (var cell in IsShowingCells && Main.MapTracker.DisplayLocations ? allCells : revealedCells)
+        foreach (var cell in IsShowingCells && showEverything ? allCells : revealedCells)
         {
             _mapCache.Value.uiRenderNormal.ShowCell(cell);
             //_mapCache.Value.uiRenderZoomedOut.ShowCell(cell);
@@ -63,7 +63,7 @@ internal class UIHandler
 
         // Update visibility of location holder
         _locationHolder.SetAsLastSibling();
-        _locationHolder.gameObject.SetActive(IsShowingLocations && Main.MapTracker.DisplayLocations);
+        _locationHolder.gameObject.SetActive(IsShowingLocations && showEverything);
 
         // Update logic status for all cells
         foreach (var location in Main.MapTracker.AllLocations.Values)
@@ -78,7 +78,7 @@ internal class UIHandler
     /// <summary>
     /// Update the position of the location holder and content of the name text
     /// </summary>
-    public void Update(GameInventory inventory)
+    public void Update(GameInventory inventory, bool showEverything)
     {
         // Process changing cursor positions
         _currentCursor = CalculateCursorPosition();
@@ -94,7 +94,7 @@ internal class UIHandler
 
         // Process location holder and name text
         UpdateLocationHolder();
-        UpdateNameText(inventory);
+        UpdateNameText(inventory, showEverything);
 
 #if DEBUG
         // Debug info for gathering positions
@@ -114,13 +114,13 @@ internal class UIHandler
         _locationHolder.position = _cellHolder.position;
     }
 
-    private void UpdateNameText(GameInventory inventory)
+    private void UpdateNameText(GameInventory inventory, bool showEverything)
     {
         if (_nameText == null)
             return;
 
         // Ensure that the cursor is over a location
-        if (!Main.MapTracker.AllLocations.TryGetValue(_currentCursor, out var location) || !Main.MapTracker.DisplayLocations)
+        if (!Main.MapTracker.AllLocations.TryGetValue(_currentCursor, out var location) || !showEverything)
         {
             _nameText.SetText(string.Empty);
             return;

@@ -21,12 +21,8 @@ public class MapTracker : BlasIIMod
     private readonly Dictionary<Vector2Int, ILocation> _locationData = new();
     internal Dictionary<Vector2Int, ILocation> AllLocations => _locationData;
 
-    /// <summary>
-    /// Whether locations should be displayed on the map
-    /// </summary>
-    internal bool DisplayLocations { get; private set; } = true;
-
     private bool _isMapOpen = false;
+    private bool _showEverything = true;
 
     /// <summary>
     /// Initialize all handlers
@@ -95,11 +91,11 @@ public class MapTracker : BlasIIMod
 
         if (InputHandler.GetKeyDown("ToggleLocations") && _ui.IsShowingCells && _ui.IsShowingLocations)
         {
-            DisplayLocations = !DisplayLocations;
-            _ui.Refresh(_inventory.CurrentInventory);
+            _showEverything = !_showEverything;
+            _ui.Refresh(_inventory.CurrentInventory, _showEverything);
         }
 
-        _ui.Update(_inventory.CurrentInventory);
+        _ui.Update(_inventory.CurrentInventory, _showEverything);
     }
 
     /// <summary>
@@ -108,7 +104,7 @@ public class MapTracker : BlasIIMod
     public void OnOpenMap()
     {
         _isMapOpen = true;
-        _ui.Refresh(_inventory.CurrentInventory);
+        _ui.Refresh(_inventory.CurrentInventory, _showEverything);
     }
 
     /// <summary>

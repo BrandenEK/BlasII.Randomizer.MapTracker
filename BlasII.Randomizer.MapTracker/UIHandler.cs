@@ -32,6 +32,8 @@ internal class UIHandler
     /// </summary>
     public void Refresh(GameInventory inventory, bool showCells, bool showLocations)
     {
+        ModLog.Info("Refreshing map cells and locations");
+
         // Create location holder and name text
         if (_locationHolder == null || _cellHolder == null)
             CreateLocationHolder();

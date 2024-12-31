@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+﻿using BlasII.ModdingAPI;
+using HarmonyLib;
 using Il2CppTGK.Game.Components.UI;
 
 namespace BlasII.Randomizer.MapTracker.Patches;
@@ -9,8 +10,20 @@ namespace BlasII.Randomizer.MapTracker.Patches;
 [HarmonyPatch(typeof(MapWindowLogic), nameof(MapWindowLogic.SetMapMode))]
 class MapWindowLogic_SetMapMode_Patch
 {
-    public static void Postfix(MapWindowLogic.MapMode mode) =>
-        Main.MapTracker.OnOpenMap(mode == MapWindowLogic.MapMode.Normal);
+    public static void Postfix(MapWindowLogic.MapMode mode)
+    {
+        ModLog.Warn("Set map mode");
+        //Main.MapTracker.OnOpenMap(mode == MapWindowLogic.MapMode.Normal);
+    }
+}
+[HarmonyPatch(typeof(MapWindowLogic), nameof(MapWindowLogic.SetCurrentRender))]
+class MapWindowLogic_SetCurrentRender_Patch
+{
+    public static void Postfix(MapWindowLogic.Renders newIdx)
+    {
+        ModLog.Warn("set render");
+        Main.MapTracker.OnOpenMap(newIdx == MapWindowLogic.Renders.Normal);
+    }
 }
 [HarmonyPatch(typeof(MapWindowLogic), nameof(MapWindowLogic.OnClose))]
 class MapWindowLogic_OnClose_Patch

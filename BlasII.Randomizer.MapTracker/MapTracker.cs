@@ -80,6 +80,32 @@ public class MapTracker : BlasIIMod
         }
     }
 
+    //private void LoadLocationData()
+    //{
+    //    if (!FileHandler.LoadDataAsJson("locations.json", out LocationInfo[] locations))
+    //    {
+    //        ModLog.Error("Failed to load location data!");
+    //        return;
+    //    }
+
+    //    var locationDict = Main.Randomizer.ItemLocationStorage.AsDictionary;
+
+    //    foreach (var info in locations)
+    //    {
+    //        if (info.Locations == null || info.Locations.Length == 0)
+    //            continue;
+
+    //        // temp until cherubs are fixed
+    //        info.Locations = info.Locations.Where(locationDict.ContainsKey).ToArray();
+    //        if (info.Locations.Length == 0)
+    //            continue;
+
+    //        _locationData.Add(new Vector2Int(info.X, info.Y), info.Locations.Length == 1
+    //            ? new SingleLocation(info.Locations[0])
+    //            : new MultipleLocation(info.Locations));
+    //    }
+    //}
+
     /// <summary>
     /// Refresh inventory when exiting game
     /// </summary>

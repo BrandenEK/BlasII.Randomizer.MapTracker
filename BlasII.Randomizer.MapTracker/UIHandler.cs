@@ -22,6 +22,13 @@ internal class UIHandler
     private Vector2Int _currentCursor;
     private int _selectedIndex = 0;
 
+    public bool IsShowingCells => _mapCache.Value != null
+        && _mapCache.Value.currentMapMode == MapWindowLogic.MapMode.Normal;
+
+    public bool IsShowingLocations => _mapCache.Value != null
+        && _mapCache.Value.currentMapMode == MapWindowLogic.MapMode.Normal
+        && _mapCache.Value.currentRenderIdx == MapWindowLogic.Renders.Normal;
+
     /// <summary>
     /// Store the marker image
     /// </summary>
@@ -30,7 +37,7 @@ internal class UIHandler
     /// <summary>
     /// Refresh all cell and location UI
     /// </summary>
-    public void Refresh(GameInventory inventory, bool showCells, bool showLocations)
+    public void Refresh(GameInventory inventory)
     {
         ModLog.Info("Refreshing map cells and locations");
 
@@ -48,7 +55,7 @@ internal class UIHandler
             _mapCache.Value.uiRenderNormal.HideCell(cell);
             //_mapCache.Value.uiRenderZoomedOut.HideCell(cell);
         }
-        foreach (var cell in showCells && Main.MapTracker.DisplayLocations ? allCells : revealedCells)
+        foreach (var cell in IsShowingCells && Main.MapTracker.DisplayLocations ? allCells : revealedCells)
         {
             _mapCache.Value.uiRenderNormal.ShowCell(cell);
             //_mapCache.Value.uiRenderZoomedOut.ShowCell(cell);
@@ -56,7 +63,7 @@ internal class UIHandler
 
         // Update visibility of location holder
         _locationHolder.SetAsLastSibling();
-        _locationHolder.gameObject.SetActive(showLocations && Main.MapTracker.DisplayLocations);
+        _locationHolder.gameObject.SetActive(IsShowingLocations && Main.MapTracker.DisplayLocations);
 
         // Update logic status for all cells
         foreach (var location in Main.MapTracker.AllLocations.Values)

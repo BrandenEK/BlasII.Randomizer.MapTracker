@@ -127,7 +127,7 @@ internal class UIHandler
         }
 
         // Set text and color based on hovered location
-        _nameText.SetText(location.GetNameAtIndex(_selectedIndex));
+        _nameText.SetText("- Room name -\n" + location.GetNameAtIndex(_selectedIndex));
         _nameText.SetColor(Colors.LogicColors[location.GetReachabilityAtIndex(_selectedIndex, inventory)]);
     }
 
@@ -195,7 +195,7 @@ internal class UIHandler
             Parent = parent,
         }).AddText(new TextCreationOptions()
         {
-            FontSize = 50,
+            FontSize = 32,
         }).AddShadow();
     }
 

@@ -51,7 +51,7 @@ internal class MultipleLocation : ILocation
         return inventory.Evaluate(location.Logic) ? Logic.AllReachable : Logic.NoneReachable;
     }
 
-    public string GetNameAtIndex(int index) => Main.Randomizer.ItemLocationStorage[_ids[GetValidIndex(index)]].Name;
+    public ItemLocation GetLocationAtIndex(int index) => Main.Randomizer.ItemLocationStorage[_ids[GetValidIndex(index)]];
 
     private int GetValidIndex(int index) => (index %= _ids.Length) < 0 ? index + _ids.Length : index;
 

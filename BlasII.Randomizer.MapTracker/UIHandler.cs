@@ -3,6 +3,7 @@ using BlasII.Framework.UI;
 using BlasII.ModdingAPI;
 using BlasII.ModdingAPI.Input;
 using BlasII.ModdingAPI.Utils;
+using BlasII.Randomizer.Models;
 using Il2CppSystem.IO;
 using Il2CppTGK.Game;
 using Il2CppTGK.Game.Components.UI;
@@ -127,7 +128,8 @@ internal class UIHandler
         }
 
         // Set text and color based on hovered location
-        _nameText.SetText(location.GetNameAtIndex(_selectedIndex));
+        ItemLocation itemLocation = location.GetLocationAtIndex(_selectedIndex);
+        _nameText.SetText($"- {Main.Randomizer.NameStorage.GetRoomName(itemLocation)} -\n{itemLocation.Name}");
         _nameText.SetColor(Colors.LogicColors[location.GetReachabilityAtIndex(_selectedIndex, inventory)]);
     }
 
@@ -195,7 +197,7 @@ internal class UIHandler
             Parent = parent,
         }).AddText(new TextCreationOptions()
         {
-            FontSize = 50,
+            FontSize = 32,
         }).AddShadow();
     }
 

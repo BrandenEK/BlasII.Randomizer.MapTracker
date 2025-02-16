@@ -25,7 +25,7 @@ internal class SingleLocation : ILocation
 
     public Logic GetReachabilityAtIndex(int index, GameInventory inventory) => GetReachability(inventory);
 
-    public string GetNameAtIndex(int index) => Main.Randomizer.ItemLocationStorage[_id].Name;
+    public ItemLocation GetLocationAtIndex(int index) => Main.Randomizer.ItemLocationStorage[_id];
 
     private bool IsCollected => Main.Randomizer.ItemHandler.CollectedLocations.Contains(_id);
 }

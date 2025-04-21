@@ -18,5 +18,8 @@
 | Red | No locations in this cell are reachable |
 
 ## Installation
-This mod is available for download through the [Blasphemous Mod Installer](https://github.com/BrandenEK/Blasphemous.Modding.Installer)
-- Required dependencies: Modding API, UI Framework, Randomizer
+This mod is available for download through the [Blasphemous Mod Installer](https://github.com/BrandenEK/Blasphemous.Modding.Installer) <br>
+Required dependencies:
+- [Modding API](https://github.com/BrandenEK/BlasII.ModdingAPI)
+- [UI Framework](https://github.com/BrandenEK/BlasII.Framework.UI)
+- [Randomizer](https://github.com/BrandenEK/BlasII.Randomizer)

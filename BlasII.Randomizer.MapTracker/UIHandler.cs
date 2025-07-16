@@ -78,8 +78,6 @@ internal class UIHandler
 
             image.TopLeftInner.color = color;
             image.BottomRightInner.color = color;
-
-            //location.Image.color = Colors.LogicColors[location.GetReachability(inventory)];
         }
 
         // Clear text for selected location name
@@ -201,8 +199,6 @@ internal class UIHandler
                 Color = Color.magenta
             });
 
-
-            location.Value.Image = tl;
             _cellImages.Add(location.Value, new CellImage(tl, br));
         }
     }

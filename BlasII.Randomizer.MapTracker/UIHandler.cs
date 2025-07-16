@@ -141,17 +141,9 @@ internal class UIHandler
 
     private void UpdateCellColor(CellImage image, Logic logic)
     {
-        if (logic == Logic.Collected)
-        {
-            image.TopLeftInner.color = Colors.Gray;
-            image.BottomRightInner.color = Colors.Gray;
-            return;
-        }
-
-        if (logic.HasFlag(Logic.Reachable))
-        {
-            image.TopLeftInner.color = Colors.LogicColors[Logic.Reachable];
-        }
+        StyleInfo style = CalculateStyle(logic);
+        image.TopLeftInner.color = style.TopLeftColor;
+        image.BottomRightInner.color = style.BottomRightColor;
     }
 
     /// <summary>
@@ -247,6 +239,38 @@ internal class UIHandler
         int x = (int)(_locationHolder.localPosition.x / -48 + 0.5f);
         int y = (int)(_locationHolder.localPosition.y / -48 + 0.5f);
         return new Vector2Int(x, y);
+    }
+
+    private StyleInfo CalculateStyle(Logic logic)
+    {
+        if (logic == Logic.Collected)
+            return new StyleInfo(Colors.Gray);
+
+        if (logic.HasFlag(Logic.Reachable))
+        {
+            if (logic.HasFlag(Logic.UnReachable))
+                return new StyleInfo(Colors.Green, Colors.Red);
+
+            if (logic.HasFlag(Logic.OutOfLogic))
+                return new StyleInfo(Colors.Green, Colors.Blue);
+
+            return new StyleInfo(Colors.Green);
+        }
+
+        if (logic.HasFlag(Logic.OutOfLogic))
+        {
+            if (logic.HasFlag(Logic.UnReachable))
+                return new StyleInfo(Colors.Blue, Colors.Red);
+
+            return new StyleInfo(Colors.Blue);
+        }
+
+        if (logic.HasFlag(Logic.UnReachable))
+        {
+            return new StyleInfo(Colors.Red);
+        }
+
+        return new StyleInfo(Colors.Invalid);
     }
 
     private readonly ObjectCache<MapWindowLogic> _mapCache = new(Object.FindObjectOfType<MapWindowLogic>);

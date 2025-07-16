@@ -3,11 +3,15 @@ using BlasII.Framework.UI;
 using BlasII.ModdingAPI;
 using BlasII.ModdingAPI.Input;
 using BlasII.ModdingAPI.Utils;
+using BlasII.Randomizer.MapTracker.Locations;
+using BlasII.Randomizer.MapTracker.Models;
 using BlasII.Randomizer.Models;
 using Il2CppSystem.IO;
 using Il2CppTGK.Game;
 using Il2CppTGK.Game.Components.UI;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace BlasII.Randomizer.MapTracker;
 
@@ -17,7 +21,8 @@ internal class UIHandler
     private Transform _cellHolder;
     private UIPixelTextWithShadow _nameText;
 
-    private Sprite _locationImage;
+    private Sprite[] _markerSprites;
+    private readonly Dictionary<ILocation, CellImage> _cellImages = [];
 
     private Vector2Int _lastCursor;
     private Vector2Int _currentCursor;
@@ -31,9 +36,9 @@ internal class UIHandler
         && _mapCache.Value.currentRenderIdx == MapWindowLogic.Renders.Normal;
 
     /// <summary>
-    /// Store the marker image
+    /// Store the marker sprites
     /// </summary>
-    public void LoadImage(Sprite image) => _locationImage = image;
+    public void LoadImages(Sprite[] images) => _markerSprites = images;
 
     /// <summary>
     /// Refresh all cell and location UI
@@ -69,7 +74,11 @@ internal class UIHandler
         // Update logic status for all cells
         foreach (var location in Main.MapTracker.AllLocations.Values)
         {
-            location.Image.color = Colors.LogicColors[location.GetReachability(inventory)];
+            CellImage image = _cellImages[location];
+            Color color = Colors.LogicColors[location.GetReachability(inventory)];
+
+            image.TopLeftInner.color = color;
+            image.BottomRightInner.color = color;
         }
 
         // Clear text for selected location name
@@ -142,6 +151,9 @@ internal class UIHandler
         if (parent == null)
             return;
 
+        // Clear image list
+        _cellImages.Clear();
+
         // Remove radar ui
         Object.Destroy(NormalRenderer.GetChild(1).gameObject);
         Object.Destroy(ZoomedRenderer.GetChild(1).gameObject);
@@ -166,14 +178,31 @@ internal class UIHandler
             });
             rect.localPosition = new Vector3(location.Key.x * 48, location.Key.y * 48);
 
-            var image = rect.AddImage(new ImageCreationOptions()
-            {
-                Sprite = _locationImage,
-                Color = Color.magenta,
-            });
+            var tl = CreateCellImage("tl", 0, rect);
+            var br = CreateCellImage("br", Mathf.PI, rect);
 
-            location.Value.Image = image;
+            _cellImages.Add(location.Value, new CellImage(tl, br));
         }
+    }
+
+    /// <summary>
+    /// Create the UI for a single cell
+    /// </summary>
+    private Image CreateCellImage(string name, float angle, Transform parent)
+    {
+        var rect = UIModder.Create(new RectCreationOptions()
+        {
+            Name = name,
+            Parent = parent,
+            Size = new Vector2(30, 30),
+        });
+        rect.RotateAroundLocal(Vector3.forward, angle);
+        
+        return rect.AddImage(new ImageCreationOptions()
+        {
+            Sprite = _markerSprites[0],
+            Color = Color.magenta
+        });
     }
 
     /// <summary>

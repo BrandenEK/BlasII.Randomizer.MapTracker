@@ -1020,7 +1020,7 @@
   {
     "x": 50,
     "y": 66,
-    "locations": [ "SHOPITINERANT.o7" ]
+    "locations": [ "SHOPITINERANT.o7", "SHOPITINERANT.o8" ]
   },
 // Profundo Lamento
   {
@@ -1296,7 +1296,7 @@
   {
     "x": 56,
     "y": 40,
-    "locations": [ "SHOPMISSABLES.o0", "SHOPMISSABLES.o1", "SHOPMISSABLES.o2", "SHOPMISSABLES.o3", "SHOPMISSABLES.o4", "SHOPMISSABLES.o5", "SHOPMISSABLES.o6" ]
+    "locations": [ "SHOPMISSABLES.o0", "SHOPMISSABLES.o1", "SHOPMISSABLES.o2", "SHOPMISSABLES.o3", "SHOPMISSABLES.o4" ]
   },
 // Icebound Mausoleum
   {
@@ -1398,7 +1398,7 @@
   {
     "x": 10,
     "y": 58,
-    "locations": [ "Z2804.i8", "Z2804.r0", "Z2804.w0" ]
+    "locations": [ "Z2804.r0", "Z2804.w0" ]
   },
   {
     "x": 23,

@@ -3,7 +3,6 @@ using BlasII.ModdingAPI.Files;
 using BlasII.Randomizer.MapTracker.Locations;
 using BlasII.Randomizer.MapTracker.Models;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace BlasII.Randomizer.MapTracker;
@@ -57,20 +56,20 @@ public class MapTracker : BlasIIMod
             return;
         }
 
+        int count = 0;
         foreach (var info in locations)
         {
             if (info.Locations == null || info.Locations.Length == 0)
                 continue;
 
-            // temp until cherubs are fixed
-            info.Locations = info.Locations.Where(x => !x.EndsWith("c0")).ToArray();
-            if (info.Locations.Length == 0)
-                continue;
-
             _locationData.Add(new Vector2Int(info.X, info.Y), info.Locations.Length == 1
                 ? new SingleLocation(info.Locations[0])
                 : new MultipleLocation(info.Locations));
+
+            count += info.Locations.Length;
         }
+
+        ModLog.Info($"Loaded {count} map locations");
     }
 
     /// <summary>

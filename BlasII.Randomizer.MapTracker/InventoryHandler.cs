@@ -41,10 +41,11 @@ internal class InventoryHandler
         _currentInventory = BlasphemousInventory.CreateNewInventory(settings);
         _currentInventory.Add(GetStartingWeaponId(settings));
 
+        // TODO: just use CollectedItems?
         foreach (string locationId in Main.Randomizer.ItemHandler.CollectedLocations)
         {
             Item item = Main.Randomizer.ItemHandler.GetItemAtLocation(locationId);
-            if (!item.Progression)
+            if (item.Class != Item.ItemClass.Progression)
                 continue;
 
             _currentInventory.Add(item.Id);

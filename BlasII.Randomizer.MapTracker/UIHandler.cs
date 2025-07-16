@@ -169,7 +169,7 @@ internal class UIHandler
             var image = rect.AddImage(new ImageCreationOptions()
             {
                 Sprite = _locationImage,
-                Color = Color.red,
+                Color = Color.magenta,
             });
 
             location.Value.Image = image;

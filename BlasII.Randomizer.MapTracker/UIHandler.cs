@@ -11,6 +11,7 @@ using Il2CppTGK.Game;
 using Il2CppTGK.Game.Components.UI;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace BlasII.Randomizer.MapTracker;
 
@@ -177,30 +178,28 @@ internal class UIHandler
             });
             rect.localPosition = new Vector3(location.Key.x * 48, location.Key.y * 48);
 
-            var tl = UIModder.Create(new RectCreationOptions()
-            {
-                Name = "tli",
-                Parent = rect,
-                Size = new Vector2(30, 30),
-            }).AddImage(new ImageCreationOptions()
-            {
-                Sprite = _markerSprites[0],
-                Color = Color.magenta
-            });
-
-            var br = UIModder.Create(new RectCreationOptions()
-            {
-                Name = "bri",
-                Parent = rect,
-                Size = new Vector2(30, 30),
-            }).AddImage(new ImageCreationOptions()
-            {
-                Sprite = _markerSprites[1],
-                Color = Color.magenta
-            });
+            var tl = CreateCellImage("tl", _markerSprites[0], rect);
+            var br = CreateCellImage("br", _markerSprites[1], rect);
 
             _cellImages.Add(location.Value, new CellImage(tl, br));
         }
+    }
+
+    /// <summary>
+    /// Create the UI for a single cell
+    /// </summary>
+    private Image CreateCellImage(string name, Sprite sprite, Transform parent)
+    {
+        return UIModder.Create(new RectCreationOptions()
+        {
+            Name = name,
+            Parent = parent,
+            Size = new Vector2(30, 30),
+        }).AddImage(new ImageCreationOptions()
+        {
+            Sprite = sprite,
+            Color = Color.magenta
+        });
     }
 
     /// <summary>

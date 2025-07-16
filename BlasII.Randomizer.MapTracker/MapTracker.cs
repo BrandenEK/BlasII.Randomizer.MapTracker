@@ -33,6 +33,9 @@ public class MapTracker : BlasIIMod
         {
             _ui.LoadImage(image);
         }
+        FileHandler.LoadDataAsFixedSpritesheet("cells.png", new Vector2(10, 10), out Sprite[] cells);
+        _ui.LoadCells(cells);
+
         InputHandler.RegisterDefaultKeybindings(new Dictionary<string, KeyCode>()
         {
             { "ToggleLocations", KeyCode.F7 }

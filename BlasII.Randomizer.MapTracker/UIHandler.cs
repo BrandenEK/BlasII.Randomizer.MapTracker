@@ -18,6 +18,7 @@ internal class UIHandler
     private UIPixelTextWithShadow _nameText;
 
     private Sprite _locationImage;
+    private Sprite[] _cells;
 
     private Vector2Int _lastCursor;
     private Vector2Int _currentCursor;
@@ -34,6 +35,11 @@ internal class UIHandler
     /// Store the marker image
     /// </summary>
     public void LoadImage(Sprite image) => _locationImage = image;
+
+    /// <summary>
+    /// Store the marker image
+    /// </summary>
+    public void LoadCells(Sprite[] cells) => _cells = cells;
 
     /// <summary>
     /// Refresh all cell and location UI
@@ -168,8 +174,18 @@ internal class UIHandler
 
             var image = rect.AddImage(new ImageCreationOptions()
             {
-                Sprite = _locationImage,
+                Sprite = _cells[0],
                 Color = Color.red,
+            });
+
+            var child = UIModder.Create(new RectCreationOptions()
+            {
+                Name = "Border",
+                Parent = rect,
+                Size = new Vector2(30, 30),
+            }).AddImage(new ImageCreationOptions()
+            {
+                Sprite = _cells[location.Key.x > 40 ? 1 : 2]
             });
 
             location.Value.Image = image;

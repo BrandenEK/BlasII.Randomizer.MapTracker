@@ -3,6 +3,7 @@ using BlasII.Framework.UI;
 using BlasII.ModdingAPI;
 using BlasII.ModdingAPI.Input;
 using BlasII.ModdingAPI.Utils;
+using BlasII.Randomizer.MapTracker.Enums;
 using BlasII.Randomizer.MapTracker.Locations;
 using BlasII.Randomizer.MapTracker.Models;
 using BlasII.Randomizer.Models;
@@ -74,11 +75,7 @@ internal class UIHandler
         // Update logic status for all cells
         foreach (var location in Main.MapTracker.AllLocations.Values)
         {
-            CellImage image = _cellImages[location];
-            Color color = Colors.LogicColors[location.GetReachability(inventory)];
-
-            image.TopLeftInner.color = color;
-            image.BottomRightInner.color = color;
+            UpdateCellColor(_cellImages[location], location.GetReachability(inventory));
         }
 
         // Clear text for selected location name
@@ -139,7 +136,22 @@ internal class UIHandler
         // Set text and color based on hovered location
         ItemLocation itemLocation = location.GetLocationAtIndex(_selectedIndex);
         _nameText.SetText($"- {Main.Randomizer.NameStorage.GetRoomName(itemLocation)} -\n{itemLocation.Name}");
-        _nameText.SetColor(Colors.LogicColors[location.GetReachabilityAtIndex(_selectedIndex, inventory)]);
+        _nameText.SetColor(Colors.ByReachability(location.GetReachabilityAtIndex(_selectedIndex, inventory)));
+    }
+
+    private void UpdateCellColor(CellImage image, Logic logic)
+    {
+        if (logic == Logic.Collected)
+        {
+            image.TopLeftInner.color = Colors.Gray;
+            image.BottomRightInner.color = Colors.Gray;
+            return;
+        }
+
+        if (logic.HasFlag(Logic.Reachable))
+        {
+            image.TopLeftInner.color = Colors.LogicColors[Logic.Reachable];
+        }
     }
 
     /// <summary>

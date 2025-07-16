@@ -28,7 +28,7 @@ public class MapTracker : BlasIIMod
     /// </summary>
     protected override void OnInitialize()
     {
-        if (FileHandler.LoadDataAsSprite("marker.png", out Sprite image, new SpriteImportOptions() { PixelsPerUnit = 10 }))
+        if (FileHandler.LoadDataAsSprite("cell.png", out Sprite image))
         {
             _ui.LoadImage(image);
         }

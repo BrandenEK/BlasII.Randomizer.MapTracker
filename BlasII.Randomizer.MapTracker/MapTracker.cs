@@ -28,9 +28,9 @@ public class MapTracker : BlasIIMod
     /// </summary>
     protected override void OnInitialize()
     {
-        if (FileHandler.LoadDataAsSprite("cell.png", out Sprite image))
+        if (FileHandler.LoadDataAsFixedSpritesheet("cells.png", new Vector2(30, 30), out Sprite[] images))
         {
-            _ui.LoadImage(image);
+            _ui.LoadImages(images);
         }
         InputHandler.RegisterDefaultKeybindings(new Dictionary<string, KeyCode>()
         {

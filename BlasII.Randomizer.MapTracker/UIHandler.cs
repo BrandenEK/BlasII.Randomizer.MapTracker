@@ -18,6 +18,7 @@ internal class UIHandler
     private UIPixelTextWithShadow _nameText;
 
     private Sprite _locationImage;
+    private Sprite[] _cellIcons;
 
     private Vector2Int _lastCursor;
     private Vector2Int _currentCursor;
@@ -31,9 +32,9 @@ internal class UIHandler
         && _mapCache.Value.currentRenderIdx == MapWindowLogic.Renders.Normal;
 
     /// <summary>
-    /// Store the marker image
+    /// Store the cell icons
     /// </summary>
-    public void LoadImage(Sprite image) => _locationImage = image;
+    public void LoadImages(Sprite[] images) => _cellIcons = images;
 
     /// <summary>
     /// Refresh all cell and location UI

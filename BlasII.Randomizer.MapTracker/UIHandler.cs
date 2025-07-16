@@ -17,7 +17,6 @@ internal class UIHandler
     private Transform _cellHolder;
     private UIPixelTextWithShadow _nameText;
 
-    private Sprite _locationImage;
     private Sprite[] _cellIcons;
 
     private Vector2Int _lastCursor;
@@ -167,13 +166,30 @@ internal class UIHandler
             });
             rect.localPosition = new Vector3(location.Key.x * 48, location.Key.y * 48);
 
-            var image = rect.AddImage(new ImageCreationOptions()
+            var tl = UIModder.Create(new RectCreationOptions()
             {
-                Sprite = _locationImage,
-                Color = Color.magenta,
+                Name = "tli",
+                Parent = rect,
+                Size = new Vector2(30, 30),
+            }).AddImage(new ImageCreationOptions()
+            {
+                Sprite = _cellIcons[0],
+                Color = Color.magenta
             });
 
-            location.Value.Image = image;
+            var br = UIModder.Create(new RectCreationOptions()
+            {
+                Name = "bri",
+                Parent = rect,
+                Size = new Vector2(30, 30),
+            }).AddImage(new ImageCreationOptions()
+            {
+                Sprite = _cellIcons[1],
+                Color = Color.magenta
+            });
+
+
+            location.Value.Image = tl;
         }
     }
 

@@ -13,10 +13,10 @@ internal class SingleLocation : ILocation
     public Logic GetReachability(GameInventory inventory)
     {
         if (IsCollected)
-            return Logic.Finished;
+            return Logic.Collected;
 
         ItemLocation location = Main.Randomizer.ItemLocationStorage[_id];
-        return inventory.Evaluate(location.Logic) ? Logic.AllReachable : Logic.NoneReachable;
+        return inventory.Evaluate(location.Logic) ? Logic.Reachable : Logic.UnReachable;
     }
 
     public Logic GetReachabilityAtIndex(int index, GameInventory inventory) => GetReachability(inventory);

@@ -3,6 +3,7 @@ using BlasII.Framework.UI;
 using BlasII.ModdingAPI;
 using BlasII.ModdingAPI.Input;
 using BlasII.ModdingAPI.Utils;
+using BlasII.Randomizer.MapTracker.Enums;
 using BlasII.Randomizer.MapTracker.Locations;
 using BlasII.Randomizer.MapTracker.Models;
 using BlasII.Randomizer.Models;
@@ -74,11 +75,7 @@ internal class UIHandler
         // Update logic status for all cells
         foreach (var location in Main.MapTracker.AllLocations.Values)
         {
-            CellImage image = _cellImages[location];
-            Color color = Colors.LogicColors[location.GetReachability(inventory)];
-
-            image.TopLeftInner.color = color;
-            image.BottomRightInner.color = color;
+            UpdateCellColor(_cellImages[location], location.GetReachability(inventory));
         }
 
         // Clear text for selected location name
@@ -139,7 +136,14 @@ internal class UIHandler
         // Set text and color based on hovered location
         ItemLocation itemLocation = location.GetLocationAtIndex(_selectedIndex);
         _nameText.SetText($"- {Main.Randomizer.NameStorage.GetRoomName(itemLocation)} -\n{itemLocation.Name}");
-        _nameText.SetColor(Colors.LogicColors[location.GetReachabilityAtIndex(_selectedIndex, inventory)]);
+        _nameText.SetColor(Colors.ByReachability(location.GetReachabilityAtIndex(_selectedIndex, inventory)));
+    }
+
+    private void UpdateCellColor(CellImage image, Logic logic)
+    {
+        StyleInfo style = CalculateStyle(logic);
+        image.TopLeftInner.color = style.TopLeftColor;
+        image.BottomRightInner.color = style.BottomRightColor;
     }
 
     /// <summary>
@@ -235,6 +239,38 @@ internal class UIHandler
         int x = (int)(_locationHolder.localPosition.x / -48 + 0.5f);
         int y = (int)(_locationHolder.localPosition.y / -48 + 0.5f);
         return new Vector2Int(x, y);
+    }
+
+    private StyleInfo CalculateStyle(Logic logic)
+    {
+        if (logic == Logic.Collected)
+            return new StyleInfo(Colors.Gray);
+
+        if (logic.HasFlag(Logic.Reachable))
+        {
+            if (logic.HasFlag(Logic.UnReachable))
+                return new StyleInfo(Colors.Green, Colors.Red);
+
+            if (logic.HasFlag(Logic.OutOfLogic))
+                return new StyleInfo(Colors.Green, Colors.Blue);
+
+            return new StyleInfo(Colors.Green);
+        }
+
+        if (logic.HasFlag(Logic.OutOfLogic))
+        {
+            if (logic.HasFlag(Logic.UnReachable))
+                return new StyleInfo(Colors.Blue, Colors.Red);
+
+            return new StyleInfo(Colors.Blue);
+        }
+
+        if (logic.HasFlag(Logic.UnReachable))
+        {
+            return new StyleInfo(Colors.Red);
+        }
+
+        return new StyleInfo(Colors.Invalid);
     }
 
     private readonly ObjectCache<MapWindowLogic> _mapCache = new(Object.FindObjectOfType<MapWindowLogic>);

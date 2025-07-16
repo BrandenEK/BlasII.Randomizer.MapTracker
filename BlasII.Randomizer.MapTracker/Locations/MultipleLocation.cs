@@ -12,7 +12,7 @@ internal class MultipleLocation : ILocation
 
     public Logic GetReachability(GameInventory inventory)
     {
-        int numGreen = 0, numRed = 0;
+        Logic logic = Logic.Collected;
 
         foreach (string id in _ids)
         {
@@ -21,19 +21,12 @@ internal class MultipleLocation : ILocation
 
             ItemLocation location = Main.Randomizer.ItemLocationStorage[id];
             if (inventory.Evaluate(location.Logic))
-                numGreen++;
+                logic |= Logic.Reachable;
             else
-                numRed++;
+                logic |= Logic.UnReachable;
         }
 
-        if (numGreen == 0 && numRed == 0)
-            return Logic.Finished;
-        else if (numGreen == 0)
-            return Logic.NoneReachable;
-        else if (numRed == 0)
-            return Logic.AllReachable;
-        else
-            return Logic.SomeReachable;
+        return logic;
     }
 
     public Logic GetReachabilityAtIndex(int index, GameInventory inventory)
@@ -41,10 +34,10 @@ internal class MultipleLocation : ILocation
         int validIndex = GetValidIndex(index);
 
         if (IsLocationCollected(_ids[validIndex]))
-            return Logic.Finished;
+            return Logic.Collected;
 
         ItemLocation location = Main.Randomizer.ItemLocationStorage[_ids[validIndex]];
-        return inventory.Evaluate(location.Logic) ? Logic.AllReachable : Logic.NoneReachable;
+        return inventory.Evaluate(location.Logic) ? Logic.Reachable : Logic.UnReachable;
     }
 
     public ItemLocation GetLocationAtIndex(int index) => Main.Randomizer.ItemLocationStorage[_ids[GetValidIndex(index)]];

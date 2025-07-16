@@ -1,21 +1,14 @@
 ﻿
 namespace BlasII.Randomizer.MapTracker.Enums;
 
-internal enum LogicOld
-{
-    Finished,
-    NoneReachable,
-    SomeReachable,
-    AllReachable,
-}
-
 [System.Flags]
 internal enum Logic
 {
+    Collected = 0x00,
+
     Reachable = 0x01,
     UnReachable = 0x02,
     OutOfLogic = 0x04,
-    Collected = 0x08,
 
     MixedReachableUnreachable = Reachable | UnReachable,
     MixedReachableOutOfLogic = Reachable | OutOfLogic,

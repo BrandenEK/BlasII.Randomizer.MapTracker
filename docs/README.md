@@ -12,10 +12,11 @@
 
 | Color | Description |
 | :---: | ----------- |
-| Gray | All locations in this cell have been collected |
-| Green | All locations in this cell are reachable |
-| Orange | Some, but not all locations in this cell are reachable |
-| Red | No locations in this cell are reachable |
+| Gray | This location has been collected |
+| Green | This location is reachable in-logic |
+| Blue | This location is reachable out-of-logic |
+| Red | This location is unreachable |
+| Split | Shows that a cell has a mix of locations with different states |
 
 ## Installation
 This mod is available for download through the [Blasphemous Mod Installer](https://github.com/BrandenEK/Blasphemous.Modding.Installer) <br>

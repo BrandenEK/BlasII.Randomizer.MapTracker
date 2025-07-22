@@ -37,7 +37,7 @@ public class MapTracker : BlasIIMod
             { "ToggleLocations", KeyCode.F7 }
         });
         MessageHandler.AllowReceivingBroadcasts = true;
-        MessageHandler.AddMessageListener("BlasII.Randomizer", "LOCATION", (content) =>
+        MessageHandler.AddMessageListener("BlasII.Randomizer", "ITEM", (content) =>
         {
             _inventory.Refresh();
         });

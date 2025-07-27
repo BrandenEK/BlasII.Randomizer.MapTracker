@@ -9,7 +9,7 @@
     <Authors>Damocles</Authors>
     <Company>Damocles</Company>
     <Description>An in-game map tracker for the Blasphemous 2 Randomizer</Description>
-    <Version>1.3.0</Version>
+    <Version>1.3.1</Version>
     
     <TargetName>RandoMap</TargetName>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>

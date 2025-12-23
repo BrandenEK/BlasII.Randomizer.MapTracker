@@ -1,16 +1,14 @@
 ﻿using BlasII.ModdingAPI;
 using BlasII.Randomizer.MapTracker.Locations;
 using BlasII.Randomizer.MapTracker.Models;
-using BlasII.Randomizer.Shuffle;
-using Il2CppMono.CSharp;
-using System.Linq;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace BlasII.Randomizer.MapTracker;
 
 internal class LocationHandler
 {
-    private LocationInfo[] _staticLocationData;
+    private readonly List<LocationInfo> _locationData;
 
     private LocationList _currentLocations;
     private bool _needsRefresh = true;
@@ -44,15 +42,16 @@ internal class LocationHandler
         foreach (var info in locations)
         {
             if (info.Locations == null || info.Locations.Length == 0)
+            {
+                ModLog.Warn($"Cell ({info.X},{info.Y}) has no valid locations");
                 continue;
+            }
 
+            _locationData.Add(info);
             count += info.Locations.Length;
         }
 
-        // maybe remove emptys, but there shouldnt be any
-
         ModLog.Info($"Loaded {count} map locations");
-        _staticLocationData = locations;
     }
 
     /// <summary>
@@ -67,40 +66,14 @@ internal class LocationHandler
     {
         ModLog.Info("Calculating new locations list");
 
+        var settings = Main.Randomizer.CurrentSettings;
+        _currentLocations = new LocationList();
 
-
-        int count = 0;
-        foreach (var info in locations)
+        foreach (var info in _locationData)
         {
-            if (info.Locations == null || info.Locations.Length == 0)
-                continue;
-
-            _locationData.Add(new Vector2Int(info.X, info.Y), info.Locations.Length == 1
+            _currentLocations.Add(new Vector2Int(info.X, info.Y), info.Locations.Length == 1
                 ? new SingleLocation(info.Locations[0])
                 : new MultipleLocation(info.Locations));
-
-            count += info.Locations.Length;
         }
-
-        ModLog.Info($"Loaded {count} map locations");
-
-
-
-        var settings = Main.Randomizer.CurrentSettings;
-        _currentInventory = BlasphemousInventory.CreateNewInventory(settings);
-        _currentInventory.Add(GetStartingWeaponId(settings));
-
-        foreach (string itemId in Main.Randomizer.ItemHandler.CollectedItems)
-        {
-            _currentInventory.Add(itemId);
-        }
-    }
-
-    public void Refreshc()
-    {
-        // Clear the current list of location data, recalculate it when entering a new game
-        // Only ever give out the current list of info based on settings.
-
-        // This way unshuffled locations are never processed anywhere, like they were simply not loaded
     }
 }

@@ -20,10 +20,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="BlasII.Framework.UI" Version="0.1.0" />
+    <PackageReference Include="BlasII.Framework.UI" Version="0.1.1" />
     <PackageReference Include="BlasII.GameLibs" Version="2.2.0" />
     <PackageReference Include="BlasII.ModdingAPI" Version="2.0.0" />
-    <PackageReference Include="BlasII.Randomizer" Version="2.4.0" />
+    <PackageReference Include="BlasII.Randomizer" Version="2.6.0" />
   </ItemGroup>
 
   <Target Name="Development" AfterTargets="PostBuildEvent">

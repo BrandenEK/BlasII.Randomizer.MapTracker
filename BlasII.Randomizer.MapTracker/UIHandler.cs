@@ -44,13 +44,13 @@ internal class UIHandler
     /// <summary>
     /// Refresh all cell and location UI
     /// </summary>
-    public void Refresh(GameInventory inventory, bool showEverything)
+    public void Refresh(GameInventory inventory, LocationList locations, bool showEverything)
     {
         ModLog.Info("Refreshing map cells and locations");
 
         // Create location holder and name text
         if (_locationHolder == null || _cellHolder == null)
-            CreateLocationHolder();
+            CreateLocationHolder(locations);
         if (_nameText == null)
             CreateNameText();
 
@@ -73,7 +73,7 @@ internal class UIHandler
         _locationHolder.gameObject.SetActive(IsShowingLocations && showEverything);
 
         // Update logic status for all cells
-        foreach (var location in Main.MapTracker.AllLocations.Values)
+        foreach (var location in locations.Values)
         {
             UpdateCellColor(_cellImages[location], location.GetReachability(inventory));
         }
@@ -85,7 +85,7 @@ internal class UIHandler
     /// <summary>
     /// Update the position of the location holder and content of the name text
     /// </summary>
-    public void Update(GameInventory inventory, bool showEverything)
+    public void Update(GameInventory inventory, LocationList locations, bool showEverything)
     {
         // Process changing cursor positions
         _currentCursor = CalculateCursorPosition();
@@ -101,7 +101,7 @@ internal class UIHandler
 
         // Process location holder and name text
         UpdateLocationHolder();
-        UpdateNameText(inventory, showEverything);
+        UpdateNameText(inventory, locations, showEverything);
 
 #if DEBUG
         // Debug info for gathering positions
@@ -121,13 +121,13 @@ internal class UIHandler
         _locationHolder.position = _cellHolder.position;
     }
 
-    private void UpdateNameText(GameInventory inventory, bool showEverything)
+    private void UpdateNameText(GameInventory inventory, LocationList locations, bool showEverything)
     {
         if (_nameText == null)
             return;
 
         // Ensure that the cursor is over a location
-        if (!Main.MapTracker.AllLocations.TryGetValue(_currentCursor, out var location) || !showEverything)
+        if (!locations.TryGetValue(_currentCursor, out var location) || !showEverything)
         {
             _nameText.SetText(string.Empty);
             return;
@@ -149,7 +149,7 @@ internal class UIHandler
     /// <summary>
     /// Create the UI for all of the squares
     /// </summary>
-    private void CreateLocationHolder()
+    private void CreateLocationHolder(LocationList locations)
     {
         var parent = MapHolder;
         if (parent == null)
@@ -172,7 +172,7 @@ internal class UIHandler
         _cellHolder = NormalRenderer.GetChild(0);
 
         // Create image for each item location
-        foreach (var location in Main.MapTracker.AllLocations)
+        foreach (var location in locations)
         {
             var rect = UIModder.Create(new RectCreationOptions()
             {

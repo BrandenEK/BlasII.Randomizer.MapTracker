@@ -50,6 +50,20 @@ public class MapTracker : BlasIIMod
         _locations.Refresh();
     }
 
+#if DEBUG
+    /// <summary>
+    /// Debug key to force refresh the inventory
+    /// </summary>
+    protected override void OnUpdate()
+    {
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.R))
+        {
+            ModLog.Info("Force refreshing the inventory");
+            _inventory.Refresh();
+        }
+    }
+#endif
+
     /// <summary>
     /// Process input and update UI when on map screen
     /// </summary>

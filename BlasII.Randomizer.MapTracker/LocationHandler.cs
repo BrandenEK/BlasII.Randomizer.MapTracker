@@ -1,7 +1,9 @@
 ﻿using BlasII.ModdingAPI;
 using BlasII.Randomizer.MapTracker.Locations;
 using BlasII.Randomizer.MapTracker.Models;
+using BlasII.Randomizer.Models;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace BlasII.Randomizer.MapTracker;
@@ -71,9 +73,15 @@ internal class LocationHandler
 
         foreach (var info in _locationData)
         {
-            _currentLocations.Add(new Vector2Int(info.X, info.Y), info.Locations.Length == 1
-                ? new SingleLocation(info.Locations[0])
-                : new MultipleLocation(info.Locations));
+            var validLocations = info.Locations.Where(x => Main.Randomizer.ItemLocationStorage[x].ContributesPercentage(settings));
+            int amount = validLocations.Count();
+
+            if (amount < 1)
+                continue;
+
+            _currentLocations.Add(new Vector2Int(info.X, info.Y), amount == 1
+                ? new SingleLocation(validLocations.First())
+                : new MultipleLocation(validLocations.ToArray()));
         }
     }
 }

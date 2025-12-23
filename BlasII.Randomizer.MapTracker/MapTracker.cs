@@ -15,6 +15,7 @@ public class MapTracker : BlasIIMod
     internal MapTracker() : base(ModInfo.MOD_ID, ModInfo.MOD_NAME, ModInfo.MOD_AUTHOR, ModInfo.MOD_VERSION) { }
 
     private readonly InventoryHandler _inventory = new();
+    private readonly LocationHandler _locations = new();
     private readonly UIHandler _ui = new();
 
     private readonly Dictionary<Vector2Int, ILocation> _locationData = new();

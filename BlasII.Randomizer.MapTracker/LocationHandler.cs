@@ -8,7 +8,7 @@ namespace BlasII.Randomizer.MapTracker;
 
 internal class LocationHandler
 {
-    private readonly List<LocationInfo> _locationData;
+    private readonly List<LocationInfo> _locationData = [];
 
     private LocationList _currentLocations;
     private bool _needsRefresh = true;

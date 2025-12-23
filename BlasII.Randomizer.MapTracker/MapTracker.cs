@@ -1,7 +1,5 @@
 ﻿using BlasII.ModdingAPI;
 using BlasII.ModdingAPI.Files;
-using BlasII.Randomizer.MapTracker.Locations;
-using BlasII.Randomizer.MapTracker.Models;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,9 +15,6 @@ public class MapTracker : BlasIIMod
     private readonly InventoryHandler _inventory = new();
     private readonly LocationHandler _locations = new();
     private readonly UIHandler _ui = new();
-
-    private readonly Dictionary<Vector2Int, ILocation> _locationData = new();
-    internal Dictionary<Vector2Int, ILocation> AllLocations => _locationData;
 
     private bool _isMapOpen = false;
     private bool _showEverything = true;
@@ -43,42 +38,16 @@ public class MapTracker : BlasIIMod
             _inventory.Refresh();
         });
 
-        LoadLocationData();
+        _locations.Initialize();
     }
 
     /// <summary>
-    /// Load the Single/Multiple location data from the json list
-    /// </summary>
-    private void LoadLocationData()
-    {
-        if (!FileHandler.LoadDataAsJson("locations.json", out LocationInfo[] locations))
-        {
-            ModLog.Error("Failed to load location data!");
-            return;
-        }
-
-        int count = 0;
-        foreach (var info in locations)
-        {
-            if (info.Locations == null || info.Locations.Length == 0)
-                continue;
-
-            _locationData.Add(new Vector2Int(info.X, info.Y), info.Locations.Length == 1
-                ? new SingleLocation(info.Locations[0])
-                : new MultipleLocation(info.Locations));
-
-            count += info.Locations.Length;
-        }
-
-        ModLog.Info($"Loaded {count} map locations");
-    }
-
-    /// <summary>
-    /// Refresh inventory when exiting game
+    /// Refresh inventory and locations when exiting game
     /// </summary>
     protected override void OnExitGame()
     {
         _inventory.Refresh();
+        _locations.Refresh();
     }
 
     /// <summary>
@@ -92,10 +61,10 @@ public class MapTracker : BlasIIMod
         if (InputHandler.GetKeyDown("ToggleLocations") && _ui.IsShowingCells && _ui.IsShowingLocations)
         {
             _showEverything = !_showEverything;
-            _ui.Refresh(_inventory.CurrentInventory, _showEverything);
+            _ui.Refresh(_inventory.CurrentInventory, _locations.CurrentLocations, _showEverything);
         }
 
-        _ui.Update(_inventory.CurrentInventory, _showEverything);
+        _ui.Update(_inventory.CurrentInventory, _locations.CurrentLocations, _showEverything);
     }
 
     /// <summary>
@@ -104,7 +73,7 @@ public class MapTracker : BlasIIMod
     public void OnOpenMap()
     {
         _isMapOpen = true;
-        _ui.Refresh(_inventory.CurrentInventory, _showEverything);
+        _ui.Refresh(_inventory.CurrentInventory, _locations.CurrentLocations, _showEverything);
     }
 
     /// <summary>

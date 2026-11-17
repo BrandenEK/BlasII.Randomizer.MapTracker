@@ -1464,5 +1464,26 @@
     "x": 17,
     "y": 58,
     "locations": [ "Z2835.i0" ]
+  },
+// Castle of the Mist
+  {
+    "x": 114,
+    "y": 39,
+    "locations": [ "Z3602.l0" ]
+  },
+  {
+    "x": 116,
+    "y": 41,
+    "locations": [ "Z3603.l5" ]
+  },
+  {
+    "x": 135,
+    "y": 39,
+    "locations": [ "Z3605.l0" ]
+  },
+  {
+    "x": 114,
+    "y": 41,
+    "locations": [ "Z3607.l2" ]
   }
 ]

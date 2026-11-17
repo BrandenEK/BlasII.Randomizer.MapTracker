@@ -64,7 +64,7 @@ internal class UIHandler
         }
         foreach (var cell in IsShowingCells && showEverything ? allCells : revealedCells)
         {
-            _mapCache.Value.uiRenderNormal.ShowCell(cell);
+            _mapCache.Value.uiRenderNormal.ShowCellAsync(cell, new Il2CppSystem.Threading.CancellationToken());
             //_mapCache.Value.uiRenderZoomedOut.ShowCell(cell);
         }
 

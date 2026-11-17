@@ -1465,6 +1465,17 @@
     "y": 58,
     "locations": [ "Z2835.i0" ]
   },
+// Usurped Halls
+  {
+    "x": 122,
+    "y": 37,
+    "locations": [ "Z2904.i0" ]
+  },
+  {
+    "x": 123,
+    "y": 40,
+    "locations": [ "Z2913.l0" ]
+  },
 // Castle of the Mist
   {
     "x": 114,

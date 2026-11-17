@@ -159,8 +159,8 @@ internal class UIHandler
         _cellImages.Clear();
 
         // Remove radar ui
-        NormalRenderer.GetChild(1).gameObject.SetActive(false);
-        ZoomedRenderer.GetChild(1).gameObject.SetActive(false);
+        //NormalRenderer.GetChild(1).gameObject.SetActive(false);
+        //ZoomedRenderer.GetChild(1).gameObject.SetActive(false);
 
         // Create rect for ui holder
         ModLog.Info("Creating new location holder");

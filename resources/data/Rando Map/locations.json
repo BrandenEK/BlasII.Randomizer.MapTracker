@@ -271,6 +271,11 @@
   },
   {
     "x": 53,
+    "y": 42,
+    "locations": [ "Z0513.i0" ]
+  },
+  {
+    "x": 53,
     "y": 44,
     "locations": [ "Z0503.i9", "SHOPHAND.o0", "SHOPHAND.o1", "SHOPHAND.o2", "SHOPHAND.o3", "SHOPHAND.o4", "SHOPHAND.o5", "SHOPHAND.o6", "SHOPHAND.o7", "SHOPHAND.o8", "SHOPHAND.o9", "SHOPHAND.o10", "SHOPHAND.o11" ]
   },
@@ -460,7 +465,7 @@
   {
     "x": 90,
     "y": 40,
-    "locations": [ "Z0830.l7" ]
+    "locations": [ "Z0830.l6" ]
   },
   {
     "x": 96,
@@ -1367,7 +1372,7 @@
   {
     "x": 79,
     "y": 23,
-    "locations": [ "Z2735.r7" ]
+    "locations": [ "Z2735.r7", "Z2735.i7" ]
   },
   {
     "x": 67,
@@ -1423,7 +1428,7 @@
   {
     "x": 39,
     "y": 67,
-    "locations": [ "Z2827.r7" ]
+    "locations": [ "Z2827.r7", "Z2827.i7" ]
   },
   {
     "x": 10,
@@ -1459,5 +1464,270 @@
     "x": 17,
     "y": 58,
     "locations": [ "Z2835.i0" ]
+  },
+// Usurped Halls
+  {
+    "x": 122,
+    "y": 37,
+    "locations": [ "Z2904.i0" ]
+  },
+  {
+    "x": 123,
+    "y": 40,
+    "locations": [ "Z2913.l0" ]
+  },
+// Geometry of Knowledge
+  {
+    "x": 127,
+    "y": 42,
+    "locations": [ "Z3002.l5" ]
+  },
+  {
+    "x": 127,
+    "y": 41,
+    "locations": [ "Z3002.l6" ]
+  },
+  {
+    "x": 127,
+    "y": 44,
+    "locations": [ "Z3004.l5" ]
+  },
+  {
+    "x": 121,
+    "y": 47,
+    "locations": [ "Z3007.l5" ]
+  },
+  {
+    "x": 119,
+    "y": 47,
+    "locations": [ "Z3008.l11" ]
+  },
+  {
+    "x": 118,
+    "y": 43,
+    "locations": [ "Z3012.l6" ]
+  },
+  {
+    "x": 122,
+    "y": 43,
+    "locations": [ "Z3014.l8" ]
+  },
+  {
+    "x": 121,
+    "y": 41,
+    "locations": [ "Z3016.l1" ]
+  },
+  {
+    "x": 125,
+    "y": 39,
+    "locations": [ "Z3017.l0" ]
+  },
+  {
+    "x": 119,
+    "y": 40,
+    "locations": [ "Z3018.l13" ]
+  },
+  {
+    "x": 123,
+    "y": 45,
+    "locations": [ "Z3020.l0" ]
+  },
+  {
+    "x": 126,
+    "y": 47,
+    "locations": [ "Z3024.l4" ]
+  },
+  {
+    "x": 127,
+    "y": 46,
+    "locations": [ "Z3024.l5" ]
+  },
+  {
+    "x": 123,
+    "y": 44,
+    "locations": [ "Z3027.w0" ]
+  },
+// Stone Entrails
+  {
+    "x": 128,
+    "y": 36,
+    "locations": [ "Z3101.l4" ]
+  },
+  {
+    "x": 123,
+    "y": 31,
+    "locations": [ "Z3105.l2" ]
+  },
+  {
+    "x": 121,
+    "y": 27,
+    "locations": [ "Z3107.l6" ]
+  },
+  {
+    "x": 123,
+    "y": 27,
+    "locations": [ "Z3107.l8" ]
+  },
+  {
+    "x": 127,
+    "y": 31,
+    "locations": [ "Z3110.l16" ]
+  },
+  {
+    "x": 131,
+    "y": 34,
+    "locations": [ "Z3111.l2" ]
+  },
+  {
+    "x": 120,
+    "y": 33,
+    "locations": [ "Z3114.l15" ]
+  },
+  {
+    "x": 119,
+    "y": 32,
+    "locations": [ "Z3115.l1" ]
+  },
+  {
+    "x": 124,
+    "y": 32,
+    "locations": [ "Z3116.l9" ]
+  },
+  {
+    "x": 121,
+    "y": 35,
+    "locations": [ "Z3118.l6" ]
+  },
+  {
+    "x": 118,
+    "y": 34,
+    "locations": [ "Z3120.l5" ]
+  },
+  {
+    "x": 114,
+    "y": 37,
+    "locations": [ "Z3122.l5" ]
+  },
+  {
+    "x": 125,
+    "y": 37,
+    "locations": [ "Z3123.l4" ]
+  },
+  {
+    "x": 129,
+    "y": 29,
+    "locations": [ "Z3124.l0" ]
+  },
+  {
+    "x": 125,
+    "y": 29,
+    "locations": [ "Z3127.l0" ]
+  },
+// The Vibrating of the Organs
+  {
+    "x": 130,
+    "y": 48,
+    "locations": [ "Z3201.l10" ]
+  },
+  {
+    "x": 130,
+    "y": 56,
+    "locations": [ "Z3201.l13" ]
+  },
+  {
+    "x": 125,
+    "y": 54,
+    "locations": [ "Z3204.l2" ]
+  },
+  {
+    "x": 124,
+    "y": 54,
+    "locations": [ "Z3205.i0" ]
+  },
+  {
+    "x": 133,
+    "y": 47,
+    "locations": [ "Z3207.l5" ]
+  },
+  {
+    "x": 133,
+    "y": 51,
+    "locations": [ "Z3210.l7" ]
+  },
+  {
+    "x": 132,
+    "y": 54,
+    "locations": [ "Z3211.l2" ]
+  },
+  {
+    "x": 129,
+    "y": 54,
+    "locations": [ "Z3213.l14" ]
+  },
+  {
+    "x": 126,
+    "y": 51,
+    "locations": [ "Z3215.l0" ]
+  },
+  {
+    "x": 120,
+    "y": 50,
+    "locations": [ "Z3219.l1" ]
+  },
+  {
+    "x": 133,
+    "y": 53,
+    "locations": [ "Z3225.l0" ]
+  },
+  {
+    "x": 119,
+    "y": 51,
+    "locations": [ "Z3227.l2" ]
+  },
+  {
+    "x": 134,
+    "y": 49,
+    "locations": [ "Z3229.l0" ]
+  },
+  {
+    "x": 114,
+    "y": 50,
+    "locations": [ "Z3230.l6" ]
+  },
+  {
+    "x": 116,
+    "y": 48,
+    "locations": [ "Z3232.l7" ]
+  },
+  {
+    "x": 132,
+    "y": 45,
+    "locations": [ "Z3237.l1" ]
+  },
+  {
+    "x": 123,
+    "y": 49,
+    "locations": [ "Z3239.w0" ]
+  },
+// Castle of the Mist
+  {
+    "x": 114,
+    "y": 39,
+    "locations": [ "Z3602.l0" ]
+  },
+  {
+    "x": 116,
+    "y": 41,
+    "locations": [ "Z3603.l5" ]
+  },
+  {
+    "x": 135,
+    "y": 39,
+    "locations": [ "Z3605.l0" ]
+  },
+  {
+    "x": 114,
+    "y": 41,
+    "locations": [ "Z3607.l2" ]
   }
 ]
